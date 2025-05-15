@@ -8,18 +8,33 @@ void main(List<String> args) {
     print("Thêm sinh viên vào danh sách(Y/N): ");
     input = stdin.readLineSync().toString();
     if (input != "Y" && input != "N") {
-      print("Bạn phải nhập 'Y' hoặc 'N'");
+      print("\nBạn phải nhập 'Y' hoặc 'N'");
       continue;
     }
     if (input == "Y") {
-      print("Nhập họ tên: ");
+      print("\nNhập họ tên: ");
       var hoTen = stdin.readLineSync().toString();
-      print("Nhập điểm Toán: ");
-      var diemToan = int.parse(stdin.readLineSync().toString());
-      print("Nhập điểm Lý: ");
-      var diemLy = int.parse(stdin.readLineSync().toString());
-      print("Nhập điểm Hoá: ");
-      var diemHoa = int.parse(stdin.readLineSync().toString());
+      late var diemToan, diemLy, diemHoa;
+
+      do {
+        print("\nĐiểm Toán phải là số !");
+        print("Nhập điểm Toán: ");
+        diemToan = stdin.readLineSync();
+      } while (int.tryParse(diemToan)==null);
+      do {
+        print("\nĐiểm Lý phải là số !");
+        print("Nhập điểm Lý: ");
+        diemLy = stdin.readLineSync();
+      } while (int.tryParse(diemLy)==null);
+      do {
+        print("\nĐiểm Hoá phải là số !");
+        print("Nhập điểm Hoá: ");
+        diemHoa = stdin.readLineSync();
+      } while (int.tryParse(diemHoa)==null);
+
+      diemToan=int.parse(diemToan);
+      diemLy=int.parse(diemLy);
+      diemHoa=int.parse(diemHoa);
       danhSachSinhVien.add([hoTen, diemToan, diemLy, diemHoa]);
       print("Đã thêm sinh viên vào danh sách");
       print(danhSachSinhVien);

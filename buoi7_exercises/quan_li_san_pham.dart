@@ -13,10 +13,22 @@ void main(List<String> args) {
     if (input == "Y") {
       print("Nhập tên sản phẩm: ");
       var tenSanPham = stdin.readLineSync().toString();
-      print("Nhập giá tiền: ");
-      var giaTien = int.parse(stdin.readLineSync().toString());
-      print("Nhập số lượng trong kho: ");
-      var soLuongTrongKho = int.parse(stdin.readLineSync().toString());
+      late var giaTien, soLuongTrongKho;
+
+      do {
+        print("\nGiá tiền phải là số !");
+        print("Nhập giá tiền: ");
+        giaTien = stdin.readLineSync();
+      } while (int.tryParse(giaTien)==null);
+      do {
+        print("\nSố lượng trong kho phải là số !");
+        print("Nhập số lượng trong kho: ");
+        soLuongTrongKho = stdin.readLineSync();
+      } while (int.tryParse(soLuongTrongKho)==null);
+
+      giaTien=int.parse(giaTien);
+      soLuongTrongKho=int.parse(soLuongTrongKho);
+
       danhsachSanPham.add({
         "ten": tenSanPham,
         "gia": giaTien,
